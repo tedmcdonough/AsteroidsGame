@@ -1,6 +1,7 @@
 Star[] night = new Star [300];
 Spaceship bob = new Spaceship();
 ArrayList <Asteroid> q = new ArrayList <Asteroid>();
+ArrayList <Bullet> b = new ArrayList <Bullet> ();
 public void setup() 
 {
   size(700, 700);
@@ -27,6 +28,10 @@ public void draw()
       q.remove(i);
     }
   }
+  for(int i = 0; i < b.size(); i++) {
+    b.get(i).move();
+    b.get(i).show();
+  }
 }
 public void keyPressed () {
   if(key == 'h') { //hyperspace
@@ -40,5 +45,8 @@ public void keyPressed () {
   }
   if(key == 'w') { //accelerate
    bob.accelerate(2);
+  }
+  if(key == 'q') { //shoot
+   b.add(new Bullet (bob));
   }
 }
